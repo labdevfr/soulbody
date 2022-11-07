@@ -1,0 +1,80 @@
+.modal{
+    width: 270px;
+    font-size: 1em;
+    text-align: left;
+    border: 1px solid #e1e1e1;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 5px 10px 5px rgb(0 0 0 / 10%);
+}
+.ModalTop{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.ProductDelete{
+    margin: auto 0;
+    height: 24px;
+    min-width: 24px;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 30px;
+    background: transparent;
+    border: 1px solid #cecdcc;
+    color: #cecdcc;
+}
+.ProductDelete:hover{
+    background: #cecdcc;
+    color: #fff;
+    transition: all .5s ease-in-out;
+}
+.ModalTitle{
+    font-size: 14px;
+    font-weight: 400;
+    color: #a07936;
+    margin: auto 0;
+    text-transform: uppercase;
+}
+.ModalBody{
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+}
+.ModalImg{
+    min-width: 120px;
+    object-fit: cover;
+    height: 120px;
+}
+.Name{
+    font-size: 14px;
+    color: #a07936;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.size{
+    font-size: 14px;
+    color: #8d8d8d;
+}
+.ModalButtons{
+    background: #EFDDD0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.ModalButtons button{
+    background-color: transparent;
+    border: 1px solid #fff;
+    font-size: 12px;
+    line-height: 16px;
+    cursor: pointer ;
+    font-weight: 400;
+    padding: 6px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.ModalButtons button:hover{
+    background: #fff;
+    color: #EFDDD0;
+    transition: .5s ease-in-out;
+}

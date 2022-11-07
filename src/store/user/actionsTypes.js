@@ -1,0 +1,7 @@
+export const ADD_PRODUCT = 'ADD_PRODUCT'
+export const INCREASE_AMOUNT = 'INCREASE_AMOUNT'
+export const DECREASE_AMOUNT = 'DECREASE_AMOUNT'
+export const DELETE_PRODUCT = 'DELETE_PRODUCT'
+export const SET_PANTIES = 'SET_PANTIES'
+export const SET_PANTY = 'SET_PANTY'
+export const SET_ORDERS = 'SET_ORDERS'
