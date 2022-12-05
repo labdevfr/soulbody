@@ -1,4 +1,16 @@
 .item img{
     height: 600px;
     object-fit: cover;
+    border-radius: 10px;
+}
+@media (max-width: 1050px) {
+    .item img{
+        height: 450px;
+    }
+}
+@media (max-width: 460px) {
+    .item img{
+        height: 400px;
+        color: #980f44;
+    }
 }

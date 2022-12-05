@@ -48,7 +48,7 @@
 }
 .Name{
     font-size: 14px;
-    color: #a07936;
+    color: rgba(224, 175, 160, 0.68);
     text-transform: uppercase;
     margin-bottom: 5px;
 }
@@ -57,7 +57,7 @@
     color: #8d8d8d;
 }
 .ModalButtons{
-    background: #EFDDD0;
+    background: rgba(224, 175, 160, 0.68);
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -75,6 +75,9 @@
 }
 .ModalButtons button:hover{
     background: #fff;
-    color: #EFDDD0;
+    color: rgba(224, 175, 160, 0.68);
     transition: .5s ease-in-out;
+}
+.ModalInfo p{
+    margin-bottom: 3px;
 }

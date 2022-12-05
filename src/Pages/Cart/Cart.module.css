@@ -18,7 +18,11 @@
     border: 1px solid #e9e9e9;
     max-width: 900px;
     padding: 35px;
-    margin: auto;
+    margin: 0 auto 50px;
+    border-radius: 5px;
+    position: relative;
+    background: rgba(235, 237, 246, 0.27);
+    overflow-y: hidden;
 }
 .CartImg{
     width: 300px;
@@ -33,6 +37,7 @@
 .ProductsList{
     max-width: 900px;
     margin: auto;
+
 }
 .ProductItem{
     display: flex;
@@ -59,11 +64,11 @@
     padding: 0;
     border-radius: 30px;
     background: transparent;
-    border: 2px solid #dbbba9;
-    color: #dbbba9;
+    border: 2px solid #94a0b2;
+    color: #94a0b2;
 }
 .ProductBtn:hover{
-    background: #dbbba9;
+    background: #94a0b2;
     color: #fff;
     transition: all .5s ease-in-out;
 }
@@ -75,6 +80,7 @@
     border-radius: 8px;
     height: 180px;
     width: 100%;
+    object-fit: cover;
 }
 .ProductInfo{
     display: flex;
@@ -84,6 +90,12 @@
 }
 .ProductTitle{
     margin: auto 0;
+    width: 40%;
+}
+.ProductNav{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
 }
 .ProductName{
     font-size: 22px;
@@ -135,39 +147,203 @@
     font-size: 22px;
 }
 .price b{
-    color: #dbbba9;
+    color: rgba(224, 175, 160, 0.68);
 }
 .ProductButtons{
     display: flex;
     justify-content: space-between;
 }
 .CartBack{
-    border: 1px solid #ddd;
+    border: 1px solid #94a0b2;
     border-radius: 30px;
     background: #fff;
     cursor: pointer;
     padding: 10px 20px;
     text-align: center;
     transition: .5s ease-in-out;
-    color: #c3c3c3;
+    color: #94a0b2;
     font-weight: 600;
 }
 .CartBack:hover{
-    background: #c3c3c3;
+    /*background: #c3c3c3;*/
+    background: #94a0b2;
     color: #fff;
 }
 .CartOrder{
-    border: 1px solid #dbbba9;
+    border: 1px solid rgba(224, 175, 160, 0.68);
     border-radius: 30px;
-    background: #fff;
     cursor: pointer;
     padding: 10px 20px;
     text-align: center;
     transition: .5s ease-in-out;
-    color: #dbbba9  ;
+
     font-weight: 600;
+    background: rgba(224, 175, 160, 0.68);
+    color: #fff;
 }
 .CartOrder:hover{
-    background: #dbbba9;
-    color: #fff;
+    background: #fff;
+    color: rgba(224, 175, 160, 0.68)  ;
+}
+.ProductsDetailsTitle{
+    display: flex;
+    flex-direction: column;
+}
+.CartSubtitle{
+    text-align: center;
+    color: red;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+.pricemin{
+    text-decoration: line-through;
+    font-size: 18px;
+}
+.red{
+    color: rgb(230, 15, 15);
+}
+.CartError{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+    color: red;
+    margin-right: 15px;
+}
+.alert{
+    position: absolute;
+    bottom: 40px;
+    margin-left: -150px;
+    left: 50%;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #f8d7da;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #f8d7da;
+    font-size: 14px;
+}
+.alertBtn{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.alertBtn img{
+    width: 30px;
+}
+
+.alert span{
+    margin: auto 0;
+}
+.color{
+    color: #797878;
+    border-color: #797878;
+}
+.ExitActive{
+    animation: fade-out 1s forwards;
+}
+.EnterActive{
+    animation: fade-in 1s forwards;
+}
+.ExitActiveAlert{
+    animation: alert-out 1s forwards;
+}
+.EnterActiveAlert{
+    animation: alert-in 1s forwards;
+}
+
+@keyframes fade-out {
+    0%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(100px);
+        opacity: 0;
+    }
+}
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes alert-out {
+    0%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+}
+@keyframes alert-in {
+    0%{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@media (max-width: 860px) {
+    .ProductTitle{
+        width: 30%;
+    }
+    .ProductNav{
+        width: 70%;
+    }
+}
+
+@media (max-width: 750px) {
+    /*.ProductTitle{*/
+    /*    margin: auto 0;*/
+    /*}*/
+    .ProductInfo{
+        display: flex;
+        flex-direction: column;
+    }
+    .ProductTitle{
+        width: 100%;
+    }
+    .ProductNav{
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .ProductItem{
+        flex-direction: column;
+    }
+    .ProductImage img{
+        border-radius: 8px;
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .Title{
+        font-size: 20px;
+    }
+    .CartSubtitle{
+        font-size: 24px;
+    }
+    .ProductsDetails{
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
+    }
+    .ProductsDetails span{
+       margin-bottom: 5px;
+    }
+    .ProductButtons{
+        flex-direction: column-reverse;
+    }
+    .ProductButtons button{
+        margin-bottom: 15px;
+    }
 }

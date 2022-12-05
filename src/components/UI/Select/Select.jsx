@@ -1,8 +1,16 @@
 import React from 'react';
 import Select from 'react-select'
 import chroma from 'chroma-js'
+import './Select.css'
 
 
+const colourOptions = [
+    { value: 'ocean',  color: '#00B8D9', isFixed: true },
+    { value: 'blue', color: '#0052CC' },
+    { value: 'purple', label: 'Purple', color: '#5243AA' },
+    { value: 'red', label: 'Red', color: '#FF5630', isFixed: true },
+    { value: 'orange', label: 'Orange', color: '#FF8B00' },
+];
 
 const dot = (color = 'transparent') => ({
     alignItems: 'center',
@@ -20,11 +28,14 @@ const dot = (color = 'transparent') => ({
 });
 
 const colourStyles = {
+    container: (styles) => ({...styles ,maxWidth: '520px', width: '100%', fontSize:'14px'}),
     control: (styles) => ({ ...styles, backgroundColor: 'white' }),
+    menu: (styles) => ({ ...styles, backgroundColor: '#f3f3f3' }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
         const color = chroma(data.color);
         return {
             ...styles,
+            ...dot(data.color),
             backgroundColor: isDisabled
                 ? undefined
                 : isSelected
@@ -51,24 +62,22 @@ const colourStyles = {
             },
         };
     },
-    input: (styles) => ({ ...styles, ...dot() }),
+    input: (styles) => ({ ...styles, ...dot(),color:'#fff' }),
     placeholder: (styles) => ({ ...styles, ...dot('#ccc') }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
 };
 
 
-const SelectContainer = () => {
-    const options = [
-        {value:'blue',label:'blue'},
-        {value:'red',label:'red'},
-        {value:'yellow',label:'yellow'},
-    ]
-    const handleChange = (selectedOption) =>{
-        console.log(selectedOption)
-    }
-
+const SelectContainer = ({isColor,colors,onChange,color}) => {
+    console.log(color)
     return (
-        <Select options={options} onChange={handleChange}/>
+        <Select
+                options={colors}
+                onChange={onChange}
+                value={color}
+                placeholder={'Колір'}
+                styles={colourStyles}
+                isDisabled={isColor}/>
     );
 };
 

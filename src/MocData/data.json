@@ -14,9 +14,23 @@
     },
     {
       "id": 3,
+      "colors": [
+        {
+          "color": "#FF5630",
+          "label": "Червоний",
+          "value": "red"
+        },
+        {
+          "color": "#5243AA",
+          "label": "Фіолетовий",
+          "value": "purple"
+        }
+      ],
       "name": "Трусики-BETTY",
       "price": 49,
-      "image": "https://raw.githubusercontent.com/MaksOnofriychuk/panty-shop/main/product-photos/660/bettyOne.jpg"
+      "image": "https://raw.githubusercontent.com/MaksOnofriychuk/panty-shop/main/product-photos/660/bettyOne.jpg",
+      "discount": 10,
+      "sizes": ["XS", "S", "M"]
     },
     {
       "id": 4,

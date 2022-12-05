@@ -12,7 +12,7 @@ const Card = ({item}) => {
     }
     return (
         <div onClick={goToCard} className={classes.card}>
-            <img className={classes.cardImage} src={item.image} alt=""/>
+            <img className={classes.cardImage} src={item.image[0]} alt=""/>
             <div className={classes.infoCard}>
                 <h1 className={classes.titleCard}>{item.name}</h1>
                 <p className={classes.priceCard}>{item.price}грн</p>

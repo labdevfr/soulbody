@@ -1,7 +1,13 @@
+
 .ExtendedContainer{
     display: flex;
-    padding: 10px 100px 50px 100px;
-    gap: 70px;
+    padding: 10px 30px;
+    margin: 0 auto;
+    max-width: 1360px;
+    gap: 60px;
+}
+.ExtendedCard{
+    /*background: rgba(235, 237, 246, 0.27);*/
 }
 .ExtendedInfo{
     display: flex;
@@ -9,12 +15,17 @@
     gap: 20px;
     width: 50%;
 }
+.ExtendedTitle{
+    font-size: 26px;
+}
 .ExtendedSelector{
     background-color: #f3f3f3;
     border-radius: 10px;
     display: grid;
     flex-direction: column;
     padding: 20px;
+    max-width: 520px;
+    width: 100%;
 }
 
 .ExtendedSelector ul {
@@ -23,10 +34,12 @@
     grid-template-rows: 1fr 1fr;
     text-align: center;
     grid-column-gap: 10px;
+    grid-row-gap: 10px;
 }
 .ExtendedSelector li {
     border: 1px solid #fff;
     border-radius: 6px;
+    background-color: #f3f3f3;
     cursor: pointer;
     flex: 1 1;
     font-size: 14px;
@@ -40,6 +53,10 @@
     border-radius: 5px;
     cursor: auto;
     transition: .5s ease-in-out;
+}
+.ExtendedSelector ul li.disabled{
+    opacity: 0.4;
+    pointer-events: none;
 }
 .ExtendedSelector li:hover{
     background-color: #dedede;
@@ -58,8 +75,7 @@
     margin-bottom: 3px;
 }
 .slider{
-    max-width: 800px;
-    height: 600px;
+    max-width: 630px;
     width: 50%;
 }
 .sliderImage{
@@ -76,23 +92,53 @@
     cursor: default;
 }
 .ExtendedBtn{
-    background: #EFDDD0;
+    /*background: #EFDDD0;*/
+    background: rgba(224, 175, 160, 0.68);
     color: white;
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 700;
-    border: 1px solid #EFDDD0;
-    padding: 10px;
+    border: 1px solid rgba(224, 175, 160, 0.68);
+    padding: 14px;
     cursor: pointer;
-    max-width: 250px;
+    max-width: 520px;
+    width: 100%;
+    border-radius: 5px;
+}
+.ExtendedBottom{
+    display: flex;
+    justify-content: space-between;
 }
 .ExtendedBtn:hover{
     background: white;
-    color: #EFDDD0;
+    color: rgba(224, 175, 160, 0.68);
     transition: .5s ease-in-out;
 }
 .ExtendedPrice{
     font-size: 25px;
+}
+table{
+    margin-top: 20px;
+    max-width: 520px;
+    width: 100%;
+    font-size: 16px;
+    border-collapse: separate;
+    white-space: nowrap;
+}
+table tr:first-child {
+    background: #F0F0F0;
+}
+table td:first-child {
+    background: #F0F0F0;
+    font-weight: 500;
+}
+table td {
+    font-size: 14px;
+    line-height: 140%;
+    padding: 9px;
+    text-align: center;
+    border-bottom: 1px solid #e7e7e7;
+    transition: .2s ease-in-out;
 }
 .ExtendedClose{
     background: transparent;
@@ -143,6 +189,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+
 }
 .ExtendedCheck button:hover{
     color: #ff7878;
@@ -159,8 +206,6 @@
     position: absolute;
     top: 45px;
     right: 20px;
-}
-.ModalList{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -204,8 +249,8 @@
     background: #8d8d8d;
     opacity: 0;
     display: block;
-    width: 11px;
-    height: 11px;
+    width: 10.5px;
+    height: 10.5px;
     transition: .2s ease-in-out;
     border-radius: 50%;
 }
@@ -244,4 +289,68 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 9px;
+}
+
+.ExitActive{
+    animation: fade-out 500ms forwards;
+}
+.EnterActive{
+    animation: fade-in 500ms forwards;
+}
+
+@keyframes fade-out {
+    0%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(100px);
+        opacity: 0;
+    }
+}
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1050px) {
+    .ExtendedContainer{
+        gap: 40px;
+    }
+}
+
+@media (max-width: 850px) {
+    .ExtendedContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px 30px;
+    }
+    .ExtendedInfo{
+        width: 100%;
+    }
+    .slider{
+        width: 100%;
+        max-width: 100%;
+    }
+    .ExtendedTitle{
+        text-align: center;
+    }
+    .ExtendedBtn{
+        max-width: 100%;
+        width: 100%;
+        border-radius: 5px;
+    }
+    .IsColor p:first-child{
+        margin-right: 10px;
+    }
+    .IsColor{
+        font-size: 14px;
+    }
 }

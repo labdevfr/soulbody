@@ -1,0 +1,36 @@
+.Footer{
+    background: #f3f3f3;
+    height: 60px;
+}
+.container{
+    max-width: 1220px;
+    padding: 0 30px;
+    margin: 0 auto;
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    height: 100%;
+}
+
+.rightText{
+    font-size: 14px;
+    color: #807d7d;
+    margin-bottom: 4px;
+}
+.nav img{
+    width: 17px;
+}
+.nav li:last-child img{
+    width: 18px;
+}
+.nav li{
+    cursor: pointer;
+    margin-right: 10px;
+}
+.nav{
+    display: flex;
+
+}

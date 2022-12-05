@@ -8,13 +8,13 @@ const CarouselComponent = ({img}) => {
     return (
         <Carousel  autoPlay={true} >
             <div  className={classes.item}>
-                <img src={img} />
+                <img src={img[0]} />
             </div>
             <div className={classes.item}>
-                <img src={img} />
+                <img src={img[1]} />
             </div>
             <div className={classes.item}>
-                <img className={classes.item} src={img} />
+                <img className={classes.item} src={img[2]} />
             </div>
         </Carousel>
     );

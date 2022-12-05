@@ -20,6 +20,7 @@ const CartModal = ({card,deleteItem}) => {
                 <div className={classes.ModalInfo}>
                     <h1 className={classes.Name}>{card.name}</h1>
                     <p className={classes.size}>Розмір: {card.size}</p>
+                    <p className={classes.size}>Колір: {card.color}</p>
                 </div>
             </div>
             <div className={classes.ModalButtons}>

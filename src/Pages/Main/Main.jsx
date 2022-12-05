@@ -3,6 +3,7 @@ import classes from './Main.module.css'
 import Card from "../../components/Card/Card";
 import array from "../../MocData";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import bag from '../../assets/free-icon-bag-5285172 (2).png'
 import {useNavigate} from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux";
@@ -49,13 +50,17 @@ const Main = () => {
                     <h1 className={classes.mainTitle}>Акція - 5 трусиків за 195 грн</h1>
                     <p className={classes.mainSubTitle}>за умовами акції колір обираємо ми</p>
                 </div>
+                <div style={{    maxWidth: '1140px', margin: '0 auto'
+                }}>
+                    <h3>Всі трусики</h3>
+                </div>
                 <div className={classes.cards}>
                     {panties.map((item)=>{
                         if (item!==null) return <Card key={item.id} item={item}/>
                     })}
                 </div>
             </div>
-
+            <Footer/>
         </div>
     );
 };

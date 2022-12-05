@@ -11,21 +11,25 @@ import CartModal from "../../components/CartModal/CartModal";
 import {fetchPantyById} from "../../AsyncActions";
 import CarouselComponent from "../../components/ Carousel/Carousel";
 import SelectContainer from "../../components/UI/Select/Select";
+import {CSSTransition,TransitionGroup} from 'react-transition-group'
 
 
 
 const ExtendedCard = () => {
-    const [activeSizeIndex, setActiveSize] = useState(null);
+    const [activeSize, setActiveSize] = useState(null);
     const [errorSize, setErrorSize] = useState(false);
+    const [errorColor, setColorSize] = useState(false);
     const [modals,setModals] = useState([])
     const {cart} = useSelector(state => state)
     const {panty} = useSelector(state => state)
     const dispatch = useDispatch()
-    const [isColor,setColor] = useState('notColor')
+    const [isColor,setIsColor] = useState('notColor')
     const navigate = useNavigate()
     const params = useParams()
     const [e,setE]=useState(false)
     const [isBool,setBool] = useState(false)
+    const [color,setColor] =useState('')
+    console.log(panty)
     const goBack =()=>{
         navigate(-1);
     }
@@ -39,23 +43,38 @@ const ExtendedCard = () => {
     },[])
 
     const onSizeSelect = (index) => {
-        console.log(index)
         setActiveSize(index);
         setErrorSize(false)
     };
+    const onChangeColor = (newValue)=>{
+       setColor(newValue)
+        setColorSize(false)
+    }
+    const onChangeRadio = (e) =>{
+        setIsColor(e.target.value)
+        setColor('')
+        setActiveSize(null)
+    }
     const addToCart =()=>{
         const newCart = {
-            id: panty.id+SIZES[activeSizeIndex],
+            id: panty.id+activeSize+color.value,
             name: panty.name,
-            price: panty.price,
+            price: isColor ==='Color'? panty.price : panty.price - panty.discount,
             image: panty.image,
             amount: 1,
-            size: SIZES[activeSizeIndex]
+            sale: isColor ==='Color',
+            color: color? color.label : 'Мікс',
+            size: activeSize
         }
-        if (!newCart.size) setErrorSize(true)
-        else {
+        if (!activeSize || (!color && isColor ==='Color') ){
+            setErrorSize(!activeSize)
+            setColorSize(!!(!color && isColor ==='Color'))
+        }
+        else{
             setErrorSize(false)
+            setColorSize(false)
             dispatch(addProduct(newCart))
+            setColor('')
             setModals((prevState)=>{
                 return [...prevState,newCart]
             })
@@ -83,33 +102,29 @@ const ExtendedCard = () => {
                 </div>
                 <div className={classes.ExtendedInfo}>
                     <h1 className={classes.ExtendedTitle}>{panty.name}</h1>
-                    <div className={classes.ExtendedColors}>Кольори : червоний, синій, білий</div>
+                    <div className={classes.ExtendedSelector}>
+                        <ul>
+                            {SIZES.map((item,index)=>(
+                                <li className={`${activeSize ===item && classes.active} ${!panty.sizes.includes(item) && classes.disabled}`} onClick={()=>onSizeSelect(item)}>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
                     <div className={classes.IsColor}>
                         <p>
                             <label>
-                                <input value={'Color'} onClick={(e)=>setColor(e.target.value)} type="radio" checked={isColor==='Color'} className={classes.RadioColor} name={'radio-group'}/>
+                                <input value={'Color'} onClick={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='Color'} className={classes.RadioColor} name={'radio-group'}/>
                                 <span className={classes.radioText}>Вибрати колір</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input value={'notColor'} onClick={(e)=>setColor(e.target.value)} type="radio" checked={isColor==='notColor'} className={classes.RadioColor} name={'radio-group'}/>
-                                <span className={classes.radioText}>Колір на наш розсуд</span>
+                                <input value={'notColor'} onClick={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='notColor'} className={classes.RadioColor} name={'radio-group'}/>
+                                <span className={classes.radioText}>Акція (колір на наш розсуд)</span>
                             </label>
 
                         </p>
                     </div>
-                    <SelectContainer/>
-                    <div>
-
-                    </div>
-                    <div className={classes.ExtendedSelector}>
-                        <ul>
-                            {SIZES.map((item,index)=>(
-                                <li className={activeSizeIndex ===index && classes.active} onClick={()=>onSizeSelect(index)}>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <SelectContainer color={color} onChange={onChangeColor} colors={panty.colors} isColor={isColor!=='Color'}/>
                     <div className={classes.ExtendedSize}>
                         <span>Розмірний ряд</span>
                         <ul>
@@ -125,18 +140,25 @@ const ExtendedCard = () => {
                     </div>
                     <div className={classes.ExtendedSend}>
                         {errorSize && (<span className={classes.ExtendedError}>Розмір не вибраний</span>)}
-                        {e ?  <div onClick={goToCart} className={classes.ExtendedCheck}>
-                            <button>
-                                <img className={classes.ImgCheck} src={cartCheck} alt=""/>
-                                <span>В кошику</span>
-                            </button>
-                        </div> : <button onClick={addToCart} className={classes.ExtendedBtn}>Купити</button> }
-
+                        {errorColor && (<span className={classes.ExtendedError}>Колір не вибраний</span>)}
+                        <button onClick={addToCart} className={classes.ExtendedBtn}>Додати в кошик</button>
                     </div>
                 </div>
             </div>
             <div className={classes.ModalList}>
-                {modals.map(item=>(<CartModal deleteItem={deleteModal} card={item}/>))}
+                <TransitionGroup>
+                    {modals.map(item=>(
+                        <CSSTransition
+                            key={item.id}
+                            timeout={500}
+                            classNames={{
+                                enter: classes.EnterActive,
+                                exitActive: classes.ExitActive
+                            }}>
+                            <CartModal deleteItem={deleteModal} card={item}/>
+                        </CSSTransition>
+                        ))}
+                </TransitionGroup>
             </div>
         </div>
     );
