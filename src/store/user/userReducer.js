@@ -46,7 +46,6 @@ export function userReducer(state=defaultState,action) {
             return {...state,cart: [...newCart],CartCount: state.CartCount-1}
         }
         case DELETE_PRODUCT : {
-            console.log(action.payload)
             const newCart = state.cart.filter((item)=>item.id!==action.payload.id)
             return {...state,cart: [...newCart],CartCount: state.CartCount-action.payload.count}
         }

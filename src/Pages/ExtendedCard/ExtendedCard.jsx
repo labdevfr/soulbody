@@ -1,12 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import classes from './ExtendedCard.module.css'
 import {useNavigate, useParams} from "react-router-dom";
-import {getOne} from "../../MocData";
 import close from '../../assets/close.svg'
 import {useDispatch, useSelector} from "react-redux";
 import {addProduct} from "../../store/user/userReducer";
 import {SIZES} from "../../utils/constants";
-import cartCheck from '../../assets/shopping-cart.png'
 import CartModal from "../../components/CartModal/CartModal";
 import {fetchPantyById} from "../../AsyncActions";
 import CarouselComponent from "../../components/ Carousel/Carousel";
@@ -29,7 +27,6 @@ const ExtendedCard = () => {
     const [e,setE]=useState(false)
     const [isBool,setBool] = useState(false)
     const [color,setColor] =useState('')
-    console.log(panty)
     const goBack =()=>{
         navigate(-1);
     }
@@ -105,20 +102,20 @@ const ExtendedCard = () => {
                     <div className={classes.ExtendedSelector}>
                         <ul>
                             {SIZES.map((item,index)=>(
-                                <li className={`${activeSize ===item && classes.active} ${!panty.sizes.includes(item) && classes.disabled}`} onClick={()=>onSizeSelect(item)}>{item}</li>
+                                <li key={item} className={`${activeSize ===item && classes.active} ${!panty.sizes.includes(item) && classes.disabled}`} onClick={()=>onSizeSelect(item)}>{item}</li>
                             ))}
                         </ul>
                     </div>
                     <div className={classes.IsColor}>
                         <p>
                             <label>
-                                <input value={'Color'} onClick={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='Color'} className={classes.RadioColor} name={'radio-group'}/>
+                                <input value={'Color'} onChange={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='Color'} className={classes.RadioColor} name={'radio-group'}/>
                                 <span className={classes.radioText}>Вибрати колір</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input value={'notColor'} onClick={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='notColor'} className={classes.RadioColor} name={'radio-group'}/>
+                                <input value={'notColor'} onChange={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='notColor'} className={classes.RadioColor} name={'radio-group'}/>
                                 <span className={classes.radioText}>Акція (колір на наш розсуд)</span>
                             </label>
 
@@ -128,10 +125,10 @@ const ExtendedCard = () => {
                     <div className={classes.ExtendedSize}>
                         <span>Розмірний ряд</span>
                         <ul>
-                            <li>XS - 86-90 см</li>
-                            <li>S - 91-94 см</li>
-                            <li>M - 95-99 см</li>
-                            <li>L - 100-104 см </li>
+                            <li>XS - 81-86 см</li>
+                            <li>S - 87-92 см</li>
+                            <li>M - 93-97 см</li>
+                            <li>L - 98-105 см </li>
                         </ul>
                     </div>
                     <div className={classes.ExtendedPrice}>

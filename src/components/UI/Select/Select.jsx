@@ -69,7 +69,6 @@ const colourStyles = {
 
 
 const SelectContainer = ({isColor,colors,onChange,color}) => {
-    console.log(color)
     return (
         <Select
                 options={colors}

@@ -5,11 +5,9 @@ export const fetchPanties = () => {
     return function (dispatch) {
         api.get(`/panties.json`)
             .then(res=>{
-                console.log(Object.keys(res.data))
                 const array = Object.keys(res.data).map(item=>{
                     return {...res.data[item],UnId: item}
                 })
-                console.log(array)
                 dispatch(setPanties(array))
             })
             .catch(e=>{
@@ -42,7 +40,6 @@ export const fetchNumbers = () => {
 export const AddNumber = (data) => {
     return function (dispatch) {
         api.put(`/orders.json`,data).then(res=>{
-            console.log(res)
         })
     }
 }

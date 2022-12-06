@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Card.module.css'
 import {useNavigate} from 'react-router-dom'
-import Carousel from "../ Carousel/Carousel";
 
 const Card = ({item}) => {
     const navigate = useNavigate()

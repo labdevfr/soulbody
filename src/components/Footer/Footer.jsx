@@ -1,8 +1,5 @@
 import React from 'react';
 import classes from './Footer.module.css'
-import {Link} from "react-router-dom";
-import inst from '../../assets/icon/instagram.png'
-import mail from '../../assets/icon/mail.png'
 
 const Footer = () => {
     return (

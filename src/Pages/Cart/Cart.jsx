@@ -14,7 +14,6 @@ const Cart = () => {
     const [carts,setCarts] = useState([...cart])
     const [errorSale,setErrorSale] = useState(false)
     const [showAlert,setShowAlert] = useState(false)
-    console.log(cart)
     const increase = (id)=>{
         dispatch(increaseAmount(id))
     }

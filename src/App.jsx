@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import './App.css';
-import Header from "./components/Header/Header";
 import AppRouter from "./components/AppRouter";
 
 function App() {

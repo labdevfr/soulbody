@@ -1,10 +1,8 @@
 import React,{useEffect} from 'react';
 import classes from './Main.module.css'
 import Card from "../../components/Card/Card";
-import array from "../../MocData";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import bag from '../../assets/free-icon-bag-5285172 (2).png'
 import {useNavigate} from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux";
 import {fetchNumbers, fetchPanties} from "../../AsyncActions";
@@ -12,7 +10,6 @@ import {fetchNumbers, fetchPanties} from "../../AsyncActions";
 const Main = () => {
     const {cart} = useSelector(state => state)
     const {panties} = useSelector(state => state)
-    console.log(panties)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const amount = ()=>{
@@ -52,7 +49,6 @@ const Main = () => {
                 </div>
                 <div style={{    maxWidth: '1140px', margin: '0 auto'
                 }}>
-                    <h3>Всі трусики</h3>
                 </div>
                 <div className={classes.cards}>
                     {panties.map((item)=>{

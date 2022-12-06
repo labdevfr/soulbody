@@ -116,6 +116,7 @@
 }
 .ExtendedPrice{
     font-size: 25px;
+    font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 table{
     margin-top: 20px;
@@ -265,6 +266,7 @@ table td {
 }
 .red{
     color: rgb(230, 15, 15);
+    font-weight: 500;
 }
 
 .select {
