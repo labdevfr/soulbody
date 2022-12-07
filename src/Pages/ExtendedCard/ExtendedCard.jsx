@@ -97,7 +97,7 @@ const ExtendedCard = () => {
                     <div className={classes.ExtendedSelector}>
                         <ul>
                             {SIZES.map((item,index)=>(
-                                <li key={index} className={`${activeSize ===item && classes.active} ${!panty.sizes.includes(item) && classes.disabled}`} onClick={()=>onSizeSelect(item)}>{item}</li>
+                                <li key={index} className={`${activeSize ===item && classes.active} ${!panty.sizes?.includes(item) && classes.disabled}`} onClick={()=>onSizeSelect(item)}>{item}</li>
                             ))}
                         </ul>
                     </div>
