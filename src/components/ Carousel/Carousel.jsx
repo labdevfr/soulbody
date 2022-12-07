@@ -6,15 +6,11 @@ import classes from './Carousel.module.css'
 const CarouselComponent = ({img}) => {
     return (
         <Carousel  autoPlay={true} >
-            <div  className={classes.item}>
-                <img src={img[0]} />
-            </div>
-            <div className={classes.item}>
-                <img src={img[1]} />
-            </div>
-            <div className={classes.item}>
-                <img className={classes.item} src={img[2]} />
-            </div>
+            {img?.map((item)=>(
+                <div key={item} className={classes.item}>
+                    <img src={item} alt="Panty"/>
+                </div>
+            ))}
         </Carousel>
     );
 };
