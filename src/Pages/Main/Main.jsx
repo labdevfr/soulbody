@@ -36,8 +36,8 @@ const Main = () => {
                     <div onClick={goToCard} className={classes.bagContainer}>
                         <svg role="img" className={classes.svgBag} xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 64 64">
-                            <path fill="none" stroke-width="2" stroke-miterlimit="10" d="M44 18h10v45H10V18h10z"></path>
-                            <path fill="none" stroke-width="2" stroke-miterlimit="10"
+                            <path fill="none" strokeWidth="2" strokeMiterlimit="10" d="M44 18h10v45H10V18h10z"></path>
+                            <path fill="none" strokeWidth="2" strokeMiterlimit="10"
                                   d="M22 24V11c0-5.523 4.477-10 10-10s10 4.477 10 10v13"></path>
                         </svg>
                     </div>
@@ -51,7 +51,7 @@ const Main = () => {
                 }}>
                 </div>
                 <div className={classes.cards}>
-                    {panties.map((item)=>{
+                    {panties?.map((item)=>{
                         if (item!==null) return <Card key={item.id} item={item}/>
                     })}
                 </div>

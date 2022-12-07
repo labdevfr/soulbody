@@ -18,22 +18,14 @@ const ExtendedCard = () => {
     const [errorSize, setErrorSize] = useState(false);
     const [errorColor, setColorSize] = useState(false);
     const [modals,setModals] = useState([])
-    const {cart} = useSelector(state => state)
     const {panty} = useSelector(state => state)
     const dispatch = useDispatch()
     const [isColor,setIsColor] = useState('notColor')
     const navigate = useNavigate()
     const params = useParams()
-    const [e,setE]=useState(false)
-    const [isBool,setBool] = useState(false)
     const [color,setColor] =useState('')
     const goBack =()=>{
         navigate(-1);
-    }
-    const goToCart =()=>{
-        navigate(`/cart`, {
-            replace: false,
-        });
     }
     useEffect(()=>{
         dispatch(fetchPantyById(params.id))
@@ -79,9 +71,12 @@ const ExtendedCard = () => {
 
     }
     const deleteModal = (cart) =>{
-        setModals((prevState)=>{
+        setModals(()=>{
             return modals.filter(item=>item.id!==cart.id)
         })
+    }
+    const deleteAllModals = () => {
+        setModals([])
     }
 
     return (
@@ -102,7 +97,7 @@ const ExtendedCard = () => {
                     <div className={classes.ExtendedSelector}>
                         <ul>
                             {SIZES.map((item,index)=>(
-                                <li key={item} className={`${activeSize ===item && classes.active} ${!panty.sizes.includes(item) && classes.disabled}`} onClick={()=>onSizeSelect(item)}>{item}</li>
+                                <li key={index} className={`${activeSize ===item && classes.active} ${!panty.sizes.includes(item) && classes.disabled}`} onClick={()=>onSizeSelect(item)}>{item}</li>
                             ))}
                         </ul>
                     </div>
@@ -123,7 +118,7 @@ const ExtendedCard = () => {
                     </div>
                     <SelectContainer color={color} onChange={onChangeColor} colors={panty.colors} isColor={isColor!=='Color'}/>
                     <div className={classes.ExtendedSize}>
-                        <span>Розмірний ряд</span>
+                        <span>Розмірний ряд:</span>
                         <ul>
                             <li>XS - 81-86 см</li>
                             <li>S - 87-92 см</li>
@@ -138,13 +133,18 @@ const ExtendedCard = () => {
                     <div className={classes.ExtendedSend}>
                         {errorSize && (<span className={classes.ExtendedError}>Розмір не вибраний</span>)}
                         {errorColor && (<span className={classes.ExtendedError}>Колір не вибраний</span>)}
-                        <button onClick={addToCart} className={classes.ExtendedBtn}>Додати в кошик</button>
+                        <button style={{marginBottom: '20px'}} onClick={addToCart} className={classes.ExtendedBtn}>Додати в кошик</button>
                     </div>
                 </div>
             </div>
             <div className={classes.ModalList}>
+                {modals.length>1 && <div>
+                    <button onClick={deleteAllModals} className={classes.closeAll}>
+                        [ Закрити Все ]
+                    </button>
+                </div>}
                 <TransitionGroup>
-                    {modals.map(item=>(
+                    {modals?.map(item=>(
                         <CSSTransition
                             key={item.id}
                             timeout={500}

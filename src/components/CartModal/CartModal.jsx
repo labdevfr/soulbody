@@ -25,7 +25,7 @@ const CartModal = ({card,deleteItem}) => {
             </div>
             <div className={classes.ModalButtons}>
                 <button onClick={()=>deleteItem(card)}>Продовжити</button>
-                <button onClick={goToCart}>В корзину</button>
+                <button onClick={goToCart}>Оформити заказ</button>
             </div>
         </div>
     );

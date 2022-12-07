@@ -8,6 +8,7 @@
 }
 .ExtendedCard{
     /*background: rgba(235, 237, 246, 0.27);*/
+    font-family: Proxima Nova,Roboto,system-ui,Tahoma,sans-serif;
 }
 .ExtendedInfo{
     display: flex;
@@ -49,7 +50,7 @@
 }
 .ExtendedSelector ul li.active{
     background: #ffffff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
     border-radius: 5px;
     cursor: auto;
     transition: .5s ease-in-out;
@@ -65,14 +66,15 @@
 }
 .ExtendedSize span {
     color: #000;
-    font-size: 20px;
+    font-size: 23px;
 }
 .ExtendedSize ul{
     color: gray;
     margin-top: 7px;
 }
 .ExtendedSize ul li{
-    margin-bottom: 3px;
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 .slider{
     max-width: 630px;
@@ -116,7 +118,6 @@
 }
 .ExtendedPrice{
     font-size: 25px;
-    font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 table{
     margin-top: 20px;
@@ -266,7 +267,6 @@ table td {
 }
 .red{
     color: rgb(230, 15, 15);
-    font-weight: 500;
 }
 
 .select {
@@ -281,6 +281,17 @@ table td {
     cursor: inherit;
     line-height: inherit;
     box-sizing: border-box;
+}
+.closeAll{
+    width: 100%;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 5px 10px 5px rgb(0 0 0 / 10%);
+    padding: 5px;
+}
+.closeAll:hover{
+    color: rgba(224, 175, 160, 0.68);
 }
 .label {
     max-width: 308px;

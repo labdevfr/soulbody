@@ -28,7 +28,7 @@ const options = [
     }
 ]
 
-const useValidation = (value,validations, isRequired) => {
+const useValidation = (value,validations) => {
     const [isEmpty,setEmpty] = useState(true)
     const [minLengthError, setMinLengthError] = useState(false)
     const [emailError, setEmailError] = useState(false)
@@ -51,6 +51,8 @@ const useValidation = (value,validations, isRequired) => {
                     const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
                     re.test(String(value).toLowerCase()) ? setEmailError(false) : setEmailError(true)
                     break
+                default:
+                    return
             }
         }
     },[value])
@@ -117,7 +119,6 @@ const FormPage = () => {
     }
 
     const {cart,orders,CartCount} = useSelector(state => state)
-    console.log(cart)
     const [sendForm,setSendForm] = useState(false)
     const [delivery,setDelivery] = useState({
         label: 'Нова пошта',
@@ -135,11 +136,6 @@ const FormPage = () => {
             replace: false,
         });
     }
-    const goToPay =()=>{
-        navigate(`/ordering`, {
-            to: 'https://www.liqpay.ua/uk/checkout/sandbox_i27864137641'
-        });
-    }
 
     const goBack =()=>{
         navigate(-1);
@@ -148,7 +144,19 @@ const FormPage = () => {
         setDelivery(newValue)
         initialValue.postOffice.setValue('')
     }
-    const handleSubmit = () =>{
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        if (!isForm()){
+           initialValue.name.onBlur(e)
+           initialValue.secondName.onBlur(e)
+           initialValue.instagram.onBlur(e)
+           initialValue.phone.onBlur()
+           initialValue.email.onBlur()
+           initialValue.town.onBlur()
+           initialValue.region.onBlur()
+           initialValue.postOffice.onBlur()
+        }
+        else {
             let token = "5456045053:AAG-nYSdOG47_HVS5XpUd_55rNCWWuAFpP8";
 
             let chat_id = "-1001601209711";
@@ -188,6 +196,7 @@ const FormPage = () => {
             dispatch(AddNumber(orders+1))
             dispatch(cleanOrder())
         }
+    }
 
 
     return (
@@ -195,7 +204,7 @@ const FormPage = () => {
             {!sendForm && <h1 className={classes.FormTitle}>Оформлення замовлення</h1>}
             {!sendForm ?
                 <div className={classes.wraper}>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div className={classes.cont}>
                             <h1 className={classes.titleBlock}>Ваші контактні дані</h1>
                             <div className={classes.UserData}>
@@ -260,7 +269,7 @@ const FormPage = () => {
                             </div>
                             <div className={classes.btns}>
                                 <button onClick={goBack} type={'button'} className={classes.BtnBack}>Повернутись до кошика</button>
-                                <button disabled={!isForm()} className={classes.FormSubmit} type="submit">Замовлення підтвержую</button>
+                                <button onClick={(e)=>handleSubmit(e)} className={classes.FormSubmit} type="submit">Замовлення підтвержую</button>
                             </div>
 
                         </div>
