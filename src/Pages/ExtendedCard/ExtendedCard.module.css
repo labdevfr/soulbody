@@ -205,7 +205,7 @@ table td {
 
 }
 .ModalList{
-    position: absolute;
+    position: fixed;
     top: 45px;
     right: 20px;
     display: flex;
