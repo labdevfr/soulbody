@@ -97,7 +97,7 @@ const Cart = () => {
                                                     </div>
                                                     <div className={classes.ProductPrice}>
                                                         {item.color==='Мікс'?
-                                                            <span><span className={classes.pricemin}>{(item.price+10)*item.amount}грн</span> <span className={classes.red}>{item.price*item.amount} грн</span></span>:
+                                                            <span><span className={classes.pricemin}>{(item.price+16)*item.amount}грн</span> <span className={classes.red}>{item.price*item.amount} грн</span></span>:
                                                             <span>{item.price*item.amount} грн</span>}
                                                     </div>
                                                     <button onClick={()=>deleteItem(item.id,item.amount)} className={classes.ProductDelete}>
