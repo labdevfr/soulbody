@@ -95,7 +95,7 @@ const Cart = () => {
                                                             <span>+</span>
                                                         </button>
                                                     </div>
-                                                    <div class  Name={classes.ProductPrice}>
+                                                    <div className={classes.ProductPrice}>
                                                         {item.color==='Мікс'?
                                                             <span><span className={classes.pricemin}>{(item.price+16)*item.amount}грн</span> <span className={classes.red}>{item.price*item.amount} грн</span></span>:
                                                             <span>{item.price*item.amount} грн</span>}
