@@ -12,7 +12,7 @@ const CartModal = ({card,deleteItem}) => {
     return (
         <div className={classes.modal}>
             <div className={classes.ModalTop}>
-                <h1 className={classes.ModalTitle}>Товар додан в корзину</h1>
+                <h1 className={classes.ModalTitle}>Товар додано в корзину</h1>
                 <button onClick={()=>deleteItem(card)} className={classes.ProductDelete}>x</button>
             </div>
             <div className={classes.ModalBody}>
@@ -25,7 +25,7 @@ const CartModal = ({card,deleteItem}) => {
             </div>
             <div className={classes.ModalButtons}>
                 <button onClick={()=>deleteItem(card)}>Продовжити</button>
-                <button onClick={goToCart}>Оформити заказ</button>
+                <button onClick={goToCart}>Оформити</button>
             </div>
         </div>
     );
