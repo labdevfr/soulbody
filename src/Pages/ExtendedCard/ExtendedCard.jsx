@@ -123,7 +123,7 @@ const ExtendedCard = () => {
                             <li>XS - 81-86 см</li>
                             <li>S - 87-92 см</li>
                             <li>M - 93-97 см</li>
-                            <li>L - 98-105 см </li>
+                            <li>L - 98-103 см </li>
                         </ul>
                     </div>
                     <div className={classes.ExtendedPrice}>
