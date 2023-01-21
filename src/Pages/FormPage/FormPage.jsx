@@ -31,7 +31,6 @@ const options = [
 const useValidation = (value,validations) => {
     const [isEmpty,setEmpty] = useState(true)
     const [minLengthError, setMinLengthError] = useState(false)
-    const [emailError, setEmailError] = useState(false)
     const [inputValid, setInputValid] = useState(false)
 
 
@@ -47,10 +46,6 @@ const useValidation = (value,validations) => {
                 case 'isEmpty' :
                     value ? setEmpty(false) : setEmpty(true)
                     break;
-                case 'isEmail':
-                    const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-                    re.test(String(value).toLowerCase()) ? setEmailError(false) : setEmailError(true)
-                    break
                 default:
                     return
             }
@@ -58,17 +53,16 @@ const useValidation = (value,validations) => {
     },[value])
 
     useEffect(()=>{
-        if (isEmpty || minLengthError || emailError) {
+        if (isEmpty || minLengthError) {
             setInputValid(false)
         } else {
             setInputValid(true)
         }
-    },[isEmpty,minLengthError,emailError])
+    },[isEmpty,minLengthError])
 
     return {
         isEmpty,
         minLengthError,
-        emailError,
         inputValid
     }
 }
@@ -105,7 +99,6 @@ const FormPage = () => {
         secondName: useInput('',{isEmpty: true}),
         instagram: useInput('',{isEmpty: true}),
         phone: useInput('',{isEmpty: true, minLength: 9}),
-        email: useInput('',{isEmpty: true, isEmail: true}),
         region: useInput('',{isEmpty: true}),
         town: useInput('',{isEmpty: true}),
         postOffice: useInput('',{isEmpty: true}),
@@ -114,7 +107,7 @@ const FormPage = () => {
 
     const isForm = () =>{
         return initialValue.name.inputValid && initialValue.secondName.inputValid &&
-            initialValue.instagram.inputValid && initialValue.phone.inputValid && initialValue.email.inputValid && initialValue.town.inputValid && initialValue.region.inputValid &&
+            initialValue.instagram.inputValid && initialValue.phone.inputValid && initialValue.town.inputValid && initialValue.region.inputValid &&
             initialValue.postOffice.inputValid
     }
 
@@ -151,7 +144,6 @@ const FormPage = () => {
            initialValue.secondName.onBlur(e)
            initialValue.instagram.onBlur(e)
            initialValue.phone.onBlur()
-           initialValue.email.onBlur()
            initialValue.town.onBlur()
            initialValue.region.onBlur()
            initialValue.postOffice.onBlur()
@@ -169,7 +161,6 @@ const FormPage = () => {
                 '<b>Імя</b>: ' + initialValue.name.value,
                 '<b>Прізвеще</b>: ' + initialValue.secondName.value,
                 '<b>Instagram</b>: ' + initialValue.instagram.value,
-                '<b>Email</b>: ' + initialValue.email.value,
                 '<b>Телефон</b>: ' + initialValue.phone.value,
                 '<b>Область</b>: ' + initialValue.region.value,
                 '<b>Місто</b>: ' + initialValue.town.value,

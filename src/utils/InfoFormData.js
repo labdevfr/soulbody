@@ -15,10 +15,6 @@ export const userData = [
         name: "phone",
         label: "Телефон*",
     },
-    {
-        name: "email",
-        label: "Email*",
-    },
 ];
 export const deliveryDataOne = [
     {
