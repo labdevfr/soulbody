@@ -1,13 +1,24 @@
+
+.Header{
+    position: relative;
+}
 .HeaderImage{
     background: url("../../assets/background3.jpg");
     background-position: bottom;
     background-size: cover;
     width: 100vm;
-    height: 400px   ;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+.menu img{
+    width: 30px;
+    height: 30px;
+}
+.menu{
+    display: none;
 }
 .blockTitle{
     font-family: 'Inria Serif';
@@ -42,13 +53,18 @@
     font-family: 'Circe',Arial,sans-serif;
     font-style: italic;
 }
-/*.logo img{*/
-/*    width: 50px;*/
-/*}*/
-/*.logo{*/
-/*    position: absolute;*/
-/*    top: 20px;*/
-/*    left: 20px;*/
-/*    font-size: 30px;*/
-/*    font-family: 'Georgia';*/
-/*}*/
+
+@media (max-width: 550px) {
+    .menu img{
+        width: 30px;
+        height: 30px;
+    }
+    .menu{
+        background: transparent;
+        border: none;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: block;
+    }
+}

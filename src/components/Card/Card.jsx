@@ -4,8 +4,9 @@ import {useNavigate} from 'react-router-dom'
 
 const Card = ({item}) => {
     const navigate = useNavigate()
+    console.log(item)
     const goToCard =()=>{
-        navigate(`/product/${item.UnId}`, {
+        navigate(`/${item.type}/${item.UnId}`, {
             replace: false,
         });
     }

@@ -196,6 +196,9 @@ table td {
 .ExtendedCheck button:hover{
     color: #ff7878;
 }
+.ExtendedSub{
+    text-align: left;
+}
 .ExtendedCheck span{
     border-bottom: 1px dotted;
 }
@@ -347,6 +350,9 @@ table td {
     }
     .ExtendedInfo{
         width: 100%;
+    }
+    .ExtendedSub{
+        text-align: center;
     }
     .slider{
         width: 100%;

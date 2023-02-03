@@ -1,16 +1,20 @@
-import {ADD_PRODUCT,
+import {
+    ADD_PRODUCT,
     INCREASE_AMOUNT,
     DECREASE_AMOUNT,
     DELETE_PRODUCT,
     SET_PANTIES,
+    SET_SLIPS,
     SET_PANTY,
     SET_ORDERS,
-    CLEAN_ORDER
+    CLEAN_ORDER, SET_KOLGOTKY
 } from "./actionsTypes";
 
 
 const defaultState = {
     panties: [],
+    slips: [],
+    kolgotky: [],
     cart: [],
     CartCount: 0,
     panty: {},
@@ -52,6 +56,12 @@ export function userReducer(state=defaultState,action) {
         case SET_PANTIES : {
             return {...state,panties: action.payload}
         }
+        case SET_SLIPS : {
+            return {...state,slips: action.payload}
+        }
+        case SET_KOLGOTKY : {
+            return {...state,kolgotky: action.payload}
+        }
         case SET_PANTY : {
             return {...state,panty: action.payload}
         }
@@ -72,6 +82,8 @@ export const increaseAmount = (payload) => ({type: INCREASE_AMOUNT ,payload})
 export const decreaseAmount = (payload) => ({type: DECREASE_AMOUNT ,payload})
 export const deleteProduct = (payload) => ({type: DELETE_PRODUCT ,payload})
 export const setPanties = (payload) => ({type: SET_PANTIES ,payload})
+export const setSlips = (payload) => ({type: SET_SLIPS ,payload})
+export const setKolgotky = (payload) => ({type: SET_KOLGOTKY ,payload})
 export const setPanty = (payload) => ({type: SET_PANTY ,payload})
 export const setOrders = (payload) => ({type: SET_ORDERS ,payload})
 export const cleanOrder = () => ({type: CLEAN_ORDER})

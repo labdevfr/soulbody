@@ -13,23 +13,25 @@ import {CSSTransition,TransitionGroup} from 'react-transition-group'
 
 
 
-const ExtendedCard = () => {
+const ExtendedCard = ({type}) => {
     const [activeSize, setActiveSize] = useState(null);
     const [errorSize, setErrorSize] = useState(false);
     const [errorColor, setColorSize] = useState(false);
     const [modals,setModals] = useState([])
     const {panty} = useSelector(state => state)
     const dispatch = useDispatch()
-    const [isColor,setIsColor] = useState('notColor')
+    const [isColor,setIsColor] = useState(type=='panties'? 'notColor':'Color')
     const navigate = useNavigate()
     const params = useParams()
     const [color,setColor] =useState('')
+    console.log(panty)
     const goBack =()=>{
         navigate(-1);
     }
     useEffect(()=>{
-        dispatch(fetchPantyById(params.id))
+        dispatch(fetchPantyById(params.id,type))
     },[])
+    console.log(panty)
 
     const onSizeSelect = (index) => {
         setActiveSize(index);
@@ -93,7 +95,11 @@ const ExtendedCard = () => {
                     <CarouselComponent img={panty.image}/>
                 </div>
                 <div className={classes.ExtendedInfo}>
-                    <h1 className={classes.ExtendedTitle}>{panty.name}</h1>
+                    <div>
+                        <h1 className={classes.ExtendedTitle}>{panty.name}</h1>
+                        {panty.type === 'slips'&& <p className={classes.ExtendedSub}>Бавовняні трусики-сліпи</p>}
+                    </div>
+
                     <div className={classes.ExtendedSelector}>
                         <ul>
                             {SIZES.map((item,index)=>(
@@ -101,30 +107,38 @@ const ExtendedCard = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className={classes.IsColor}>
-                        <p>
-                            <label>
-                                <input value={'Color'} onChange={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='Color'} className={classes.RadioColor} name={'radio-group'}/>
-                                <span className={classes.radioText}>Вибрати колір</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input value={'notColor'} onChange={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='notColor'} className={classes.RadioColor} name={'radio-group'}/>
-                                <span className={classes.radioText}>Акція (колір на наш розсуд)</span>
-                            </label>
+                    {type=='panties'?
+                        <div className={classes.IsColor}>
+                            <p>
+                                <label>
+                                    <input value={'Color'} onChange={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='Color'} className={classes.RadioColor} name={'radio-group'}/>
+                                    <span className={classes.radioText}>Вибрати колір</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input value={'notColor'} onChange={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='notColor'} className={classes.RadioColor} name={'radio-group'}/>
+                                    <span className={classes.radioText}>Акція (колір на наш розсуд)</span>
+                                </label>
 
-                        </p>
-                    </div>
+                            </p>
+                        </div>: null}
                     <SelectContainer color={color} onChange={onChangeColor} colors={panty.colors} isColor={isColor!=='Color'}/>
                     <div className={classes.ExtendedSize}>
                         <span>Розмірний ряд:</span>
-                        <ul>
+                        {type == "panties" || type == "slips"?
+                            <ul>
                             <li>XS - 81-86 см</li>
                             <li>S - 87-92 см</li>
                             <li>M - 93-97 см</li>
                             <li>L - 98-103 см </li>
-                        </ul>
+                        </ul> :
+                            <ul>
+                                <li>Талія: 60-88 см</li>
+                                <li>Бедра: 84-105 см</li>
+                            </ul>
+                        }
+
                     </div>
                     <div className={classes.ExtendedPrice}>
                         {isColor==='Color'? <span>Ціна: {panty.price} грн</span>:

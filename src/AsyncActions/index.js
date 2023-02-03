@@ -1,5 +1,5 @@
 import {api} from "../helpers";
-import {setPanties,setPanty,setOrders} from "../store/user/userReducer";
+import {setPanties,setPanty,setOrders,setSlips,setKolgotky} from "../store/user/userReducer";
 
 export const fetchPanties = () => {
     return function (dispatch) {
@@ -15,9 +15,37 @@ export const fetchPanties = () => {
             })
     }
 }
-export const fetchPantyById = (id) => {
+export const fetchSlips = () => {
     return function (dispatch) {
-        api.get(`/panties/${id}.json`)
+        api.get(`/slips.json`)
+            .then(res=>{
+                const array = Object.keys(res.data).map(item=>{
+                    return {...res.data[item],UnId: item}
+                })
+                dispatch(setSlips(array))
+            })
+            .catch(e=>{
+                console.log(e)
+            })
+    }
+}
+export const fetchKolgotky = () => {
+    return function (dispatch) {
+        api.get(`/tights.json`)
+            .then(res=>{
+                const array = Object.keys(res.data).map(item=>{
+                    return {...res.data[item],UnId: item}
+                })
+                dispatch(setKolgotky(array))
+            })
+            .catch(e=>{
+                console.log(e)
+            })
+    }
+}
+export const fetchPantyById = (id,type) => {
+    return function (dispatch) {
+        api.get(`/${type}/${id}.json`)
             .then(res=>{
                 dispatch(setPanty(res.data))
             })
