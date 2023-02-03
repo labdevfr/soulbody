@@ -4,6 +4,7 @@ import {useSelector,useDispatch} from "react-redux";
 import close from '../../assets/close.svg'
 import {increaseAmount,decreaseAmount,deleteProduct} from "../../store/user/userReducer";
 import {useNavigate} from "react-router-dom";
+import cartImg from '../../assets/icon/shopping-cart.png'
 import { CSSTransition,TransitionGroup } from 'react-transition-group';
 
 const Cart = () => {
@@ -53,7 +54,7 @@ const Cart = () => {
     return (
         <div className={classes.Cart}>
             <div className={classes.CartTitle}>
-                <img src="https://irwhite-room.herokuapp.com/static/media/cart-basket.dcd5168086a25b3307ba9f5524ca6e70.svg" alt=""/>
+                <img src={cartImg} alt=""/>
                 <h1 className={classes.Title}>Корзина</h1>
             </div>
             {/*<h1 className={classes.CartSubtitle}>Акція діє від 5 трусиків</h1>*/}

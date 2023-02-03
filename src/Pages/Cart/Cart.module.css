@@ -8,6 +8,10 @@
     display: flex;
     gap: 15px;
 }
+.CartTitle img{
+    width: 35px;
+    height: 35px;
+}
 .Title{
     font-size: 30px;
 }
