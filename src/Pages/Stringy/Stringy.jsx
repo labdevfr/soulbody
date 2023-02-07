@@ -13,7 +13,7 @@ const Stringy = () => {
     return (
         <>
             <div className={classes.sale}>
-                <h1 className={classes.mainTitle}>Акція - 5 трусиків за 195 грн</h1>
+                <h1 className={classes.mainTitle}>Акція - 5 трусиків за {(panties[0].price - panties[0].discount) * 5} грн</h1>
                 <p className={classes.mainSubTitle}>за умовами акції колір обираємо ми</p>
             </div>
             <Cards panties={panties}/>
