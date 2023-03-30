@@ -18,7 +18,7 @@ const Card = ({item}) => {
             </div>
             <div className={classes.sizeBlock}>
                 <ul>
-                    {item.sizes.map((item,index)=>(<li>{item}</li>))}
+                    {item.sizes?.map((item,index)=>(<li>{item}</li>))}
                 </ul>
             </div>
             <button className={classes.btn}>Переглянути</button>
