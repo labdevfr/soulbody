@@ -18,10 +18,9 @@ const ExtendedCard = ({type}) => {
     const [errorColor, setColorSize] = useState(false);
     const [modals,setModals] = useState([])
     const {panty} = useSelector(state => state)
-    const [currentPantyData, setCurrentPantyData] = useState(null);
     const [activeSize, setActiveSize] = useState(null);
     const dispatch = useDispatch()
-    const [isColor,setIsColor] = useState(type=='panties'? 'notColor':'Color')
+    const [isColor,setIsColor] = useState(type==='panties'? 'notColor':'Color')
     const navigate = useNavigate()
     const params = useParams()
     const [color,setColor] =useState('')
@@ -35,7 +34,6 @@ const ExtendedCard = ({type}) => {
     useEffect(() => {
         if (panty) {
             if (panty.id == 40) setActiveSize('Універсальний')
-            setCurrentPantyData(panty);
         }
     }, [panty]);
 
@@ -106,7 +104,7 @@ const ExtendedCard = ({type}) => {
                         <h1 className={classes.ExtendedTitle}>{panty?.name}</h1>
                         {panty?.type === 'slips'&& <p className={classes.ExtendedSub}>Бавовняні трусики-сліпи</p>}
                     </div>
-                    {panty?.size.panties && <p>Розмір трусиків:</p>}
+                    {panty?.size?.panties && <p>Розмір трусиків:</p>}
                     <div className={classes.ExtendedSelector}>
                         <ul>
                             {panty?.type !=='sets' && SIZES.map((item,index)=>(
@@ -139,13 +137,13 @@ const ExtendedCard = ({type}) => {
                     <SelectContainer color={color} onChange={onChangeColor} colors={panty?.colors} isColor={isColor!=='Color'}/>
                     <div className={classes.ExtendedSize}>
                         <span>Розмірний ряд:</span>
-                        {type === "panties" || type === "slips" &&
+                        {type === "panties" || type === "slips"?
                             <ul>
                             <li>XS - 81-86 см</li>
                             <li>S - 87-92 см</li>
                             <li>M - 93-97 см</li>
                             <li>L - 98-103 см </li>
-                        </ul> }
+                        </ul>: null }
                         {type === "tights" &&  <ul>
                             <li>Талія: 60-88 см</li>
                             <li>Бедра: 84-105 см</li>
