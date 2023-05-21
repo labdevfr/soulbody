@@ -110,10 +110,10 @@ const ExtendedCard = ({type}) => {
                             {panty?.type !=='sets' && SIZES.map((item,index)=>(
                                 <li key={index} className={`${activeSize === item? classes.active: ''} ${!panty?.sizes?.includes(item)? classes.disabled : ''}`} onClick={()=>onSizeSelect(item)}>{item}</li>
                             ))}
-                            {panty.id === 42 && SIZES.map((item,index)=>(
+                            {panty?.id === 42 && SIZES.map((item,index)=>(
                                 <li key={index} className={`${activeSize === item? classes.active: ''}`} onClick={()=>onSizeSelect(item)}>{item}</li>
                             ))}
-                            {panty?.size.panties &&  panty?.size?.panties?.map((item,index)=>(
+                            {panty?.size?.panties &&  panty?.size?.panties?.map((item,index)=>(
                                 <li key={index} className={`${activeSize === item? classes.active: ''}`} onClick={()=>onSizeSelect(item)}>{item}</li>
                             ))}
                         </ul>
@@ -150,14 +150,14 @@ const ExtendedCard = ({type}) => {
                         </ul>}
                         {type === "sets" &&  <ul>
                             <li>Обхват грудей: {panty?.size?.chest}</li>
-                            {panty?.size.hips && <><li>Обхват талії: {panty.size?.middle}</li>
+                            {panty?.size?.hips && <><li>Обхват талії: {panty.size?.middle}</li>
                                 <li>Обхват бедер: {panty?.size?.hips}</li></>}
                         </ul>}
 
                     </div>
                     <div className={classes.ExtendedPrice}>
                         {isColor==='Color'? <span>Ціна: {panty?.price} грн</span>:
-                        <span>Ціна: <span className={classes.pricemin}>{panty.price}грн</span> <span className={classes.red}>{panty.price-panty.discount} грн</span></span>}
+                        <span>Ціна: <span className={classes.pricemin}>{panty?.price}грн</span> <span className={classes.red}>{panty.price-panty.discount} грн</span></span>}
                     </div>
                     <div className={classes.ExtendedSend}>
                         {errorSize && (<span className={classes.ExtendedError}>Розмір не вибраний</span>)}
