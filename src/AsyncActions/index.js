@@ -1,5 +1,6 @@
 import {api} from "../helpers";
-import {setPanties,setPanty,setOrders,setSlips,setKolgotky} from "../store/user/userReducer";
+import {setPanties,setPanty,setOrders,setSlips,setKolgotky,setCollection,setSets} from "../store/user/userReducer";
+
 
 export const fetchPanties = () => {
     return function (dispatch) {
@@ -9,6 +10,17 @@ export const fetchPanties = () => {
                     return {...res.data[item],UnId: item}
                 })
                 dispatch(setPanties(array))
+            })
+            .catch(e=>{
+                console.log(e)
+            })
+    }
+}
+export const fetchCollection = () => {
+    return function (dispatch) {
+        api.get(`/collection.json`)
+            .then(res=>{
+                dispatch(setCollection(res.data))
             })
             .catch(e=>{
                 console.log(e)
@@ -37,6 +49,20 @@ export const fetchKolgotky = () => {
                     return {...res.data[item],UnId: item}
                 })
                 dispatch(setKolgotky(array))
+            })
+            .catch(e=>{
+                console.log(e)
+            })
+    }
+}
+export const fetchSets = () => {
+    return function (dispatch) {
+        api.get(`/sets.json`)
+            .then(res=>{
+                const array = Object.keys(res.data).map(item=>{
+                    return {...res.data[item],UnId: item}
+                })
+                dispatch(setSets(array))
             })
             .catch(e=>{
                 console.log(e)

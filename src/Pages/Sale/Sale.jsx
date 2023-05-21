@@ -1,14 +1,15 @@
 import React,{useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchPanties} from "../../AsyncActions";
-import classes from "./Stringy.module.css";
+import classes from "./Sale.module.css";
 import Cards from "../../components/Cards/Cards";
 
-const Stringy = () => {
+const Sale = () => {
     const {panties} = useSelector(state => state)
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(fetchPanties())
+        if (panties.length === 0) dispatch(fetchPanties())
+
     },[])
     return (
         <>
@@ -22,4 +23,4 @@ const Stringy = () => {
     );
 };
 
-export default Stringy;
+export default Sale;

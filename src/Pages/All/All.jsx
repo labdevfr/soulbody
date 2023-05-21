@@ -1,21 +1,28 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchSlips,fetchPanties,fetchKolgotky} from "../../AsyncActions";
+import {fetchSlips,fetchPanties,fetchKolgotky,fetchCollection} from "../../AsyncActions";
 import Cards from "../../components/Cards/Cards";
-import kolgotky from "../Kolgotky/Kolgotky";
+import classes from './All.module.css'
+import CardCollection from "../../components/CardCollection/CardCollection";
 
 const All = () => {
-    const {slips} = useSelector(state => state)
-    const {panties} = useSelector(state => state)
-    const {kolgotky} = useSelector(state => state)
+    const {collection} = useSelector(state => state)
     const dispatch = useDispatch()
+    console.log(collection)
     useEffect(()=>{
-        dispatch(fetchSlips())
-        dispatch(fetchPanties())
-        dispatch(fetchKolgotky())
+        dispatch(fetchCollection())
     },[])
     return (
-        <Cards panties={[...panties,...slips,...kolgotky]}/>
+        <div className={classes.collectionsContainer}>
+            <h1 className={classes.CollectionTitle}>Колекція</h1>
+            <div className={classes.collections}>
+                {collection.map((item,index)=>{
+                    return (<CardCollection index={index+1} item={item}/>)
+                })}
+            </div>
+        </div>
+
+
     );
 };
 

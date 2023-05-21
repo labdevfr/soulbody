@@ -1,65 +1,90 @@
 .navbar{
-    padding-top: 32px;
-    padding-bottom: 12px;
-    position: relative;
-    transition: 1s;
+
 }
 .links{
     display: flex;
     justify-content: center;
     gap: 30px;
-    font-family: Proxima Nova, Roboto, system-ui, Tahoma, sans-serif;
+    /*font-family: Proxima Nova, Roboto, system-ui, Tahoma, sans-serif;*/
     font-weight: 700;
 }
 .link a{
-    font-size: 25px;
+    font-size: 18px;
     color: black;
     text-decoration: none;
     cursor: pointer;
 
 }
-.link{
-    position: relative;
+/*.link{*/
+/*    position: relative;*/
+/*}*/
+.menu img{
+    width: 30px;
+    height: 30px;
+}
+.menu{
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    /*display: block;*/
+}
+.burger{
+    display: none;
 }
 .closeBar{
     background: transparent;
     border: none;
     position: absolute;
-    right: 5px;
-    top: 5px;
-    display: none;
-    cursor: pointer;
+    top: 20px;
+    right: 20px;
 }
 .closeBar img{
     width: 35px;
     height: 35px;
 
 }
-
-@media (max-width: 550px) {
-    .navbar{
-        transform: translateY(-700px);
-        background: #fff;
-        padding-top: 40px;
-        padding-bottom: 25px;
-    }
-    .navbar ul{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.mobileLinks{
+    position: fixed;
+    transition: 1s;
+    height: 100vh;
+    background: #fff;
+    top: 0;
+    max-width: 400px;
+    width: 100%;
+    padding: 60px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.mobileNav{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+    z-index: 30;
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+.mobileNav.active{
+    transform: translateX(0);
+    transition: 0.5s;
+    overflow: hidden;
+}
+@media (max-width: 750px) {
     .links{
-        gap: 20px;
+        display: none;
+    }
+    .burger{
+        display: block;
+    }
+    .link{
+        margin-bottom: 30px;
     }
     .link a{
-        font-size: 22px;
-
-    }
-    .active{
-        transform: translateY(-400px);
-        transition: 1s ;
-    }
-    .closeBar{
-        display: block;
+        font-size: 20px;
     }
 }

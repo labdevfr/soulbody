@@ -1,0 +1,59 @@
+.cardCollection{
+    cursor: pointer;
+    overflow: hidden;
+
+}
+.cardCollection img:hover{
+    transform: scale(105%);
+    transition: 0.5s;
+}
+.cardCollection img{
+    transition: 0.5s;
+}
+.cardCollection1{
+    grid-row-start: 1;
+    grid-column-start: 1;
+
+    grid-row-end: 2;
+    grid-column-end: 4;
+    height: 100%;
+}
+.cardCollection2{
+    grid-row-start: 2;
+    grid-column-start: 1;
+
+    grid-row-end: 3;
+    grid-column-end: 2;
+}
+.cardCollection3{
+    grid-row-start: 2;
+    grid-column-start: 2;
+
+    grid-row-end: 3;
+    grid-column-end: 3;
+}
+.cardCollection4{
+    grid-row-start: 2;
+    grid-column-start: 3;
+
+    grid-row-end: 3;
+    grid-column-end: 4;
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
+.cardCollection1 img{
+    height: 100%;
+    width: 100%;
+}
+.cardCollection2 img{
+    height: 100%;
+    width: 100%;
+}
+.cardCollection3 img{
+    height: 100%;
+    width: 100%;
+}
+.cardCollection4 img{
+    height: 100%;
+    width: 100%;
+}

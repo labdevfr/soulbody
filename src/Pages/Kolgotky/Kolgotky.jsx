@@ -7,7 +7,9 @@ const Kolgotky = () => {
     const {kolgotky} = useSelector(state => state)
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(fetchKolgotky())
+        console.log(kolgotky)
+        console.log('ko')
+        if (kolgotky.length === 0) dispatch(fetchKolgotky())
     },[])
     return (
         <Cards panties={kolgotky}/>

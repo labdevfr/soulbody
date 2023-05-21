@@ -11,16 +11,19 @@ const Card = ({item}) => {
     }
     return (
         <div onClick={goToCard} className={classes.card}>
-            <img className={classes.cardImage} src={item.image[0]} alt=""/>
+            <div className={classes.cardImage}>
+                <img src={item.image[0]} alt=""/>
+            </div>
             <div className={classes.infoCard}>
                 <h1 className={classes.titleCard}>{item.name}</h1>
                 <p className={classes.priceCard}>{item.price}грн</p>
             </div>
-            <div className={classes.sizeBlock}>
+            {item.type !== 'sets' && <div className={classes.sizeBlock}>
                 <ul>
-                    {item.sizes?.map((item,index)=>(<li>{item}</li>))}
+                    {item.sizes?.map((item,index)=>(<li key={index}>{item}</li>))}
                 </ul>
-            </div>
+            </div>}
+
             <button className={classes.btn}>Переглянути</button>
         </div>
     );

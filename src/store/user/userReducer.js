@@ -7,7 +7,9 @@ import {
     SET_SLIPS,
     SET_PANTY,
     SET_ORDERS,
-    CLEAN_ORDER, SET_KOLGOTKY
+    CLEAN_ORDER, SET_KOLGOTKY,
+    SET_COLLECTION,
+    SET_SETS
 } from "./actionsTypes";
 
 
@@ -18,6 +20,8 @@ const defaultState = {
     cart: [],
     CartCount: 0,
     panty: {},
+    sets:[],
+    collection: [],
     orders: 0
 }
 const updateCartAmount = (state,id) =>{
@@ -53,6 +57,9 @@ export function userReducer(state=defaultState,action) {
             const newCart = state.cart.filter((item)=>item.id!==action.payload.id)
             return {...state,cart: [...newCart],CartCount: state.CartCount-action.payload.count}
         }
+        case SET_COLLECTION : {
+            return {...state,collection: action.payload}
+        }
         case SET_PANTIES : {
             return {...state,panties: action.payload}
         }
@@ -61,6 +68,9 @@ export function userReducer(state=defaultState,action) {
         }
         case SET_KOLGOTKY : {
             return {...state,kolgotky: action.payload}
+        }
+        case SET_SETS : {
+            return {...state,sets: action.payload}
         }
         case SET_PANTY : {
             return {...state,panty: action.payload}
@@ -84,8 +94,10 @@ export const deleteProduct = (payload) => ({type: DELETE_PRODUCT ,payload})
 export const setPanties = (payload) => ({type: SET_PANTIES ,payload})
 export const setSlips = (payload) => ({type: SET_SLIPS ,payload})
 export const setKolgotky = (payload) => ({type: SET_KOLGOTKY ,payload})
+export const setSets = (payload) => ({type: SET_SETS ,payload})
 export const setPanty = (payload) => ({type: SET_PANTY ,payload})
 export const setOrders = (payload) => ({type: SET_ORDERS ,payload})
 export const cleanOrder = () => ({type: CLEAN_ORDER})
+export const setCollection = (payload) => ({type: SET_COLLECTION,payload})
 
 

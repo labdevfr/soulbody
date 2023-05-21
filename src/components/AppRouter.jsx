@@ -1,10 +1,11 @@
 import React from 'react';
 import {useRoutes} from 'react-router-dom'
 import Main from "../Pages/Main/Main";
-import Stringy from "../Pages/Stringy/Stringy";
-import Slipy from "../Pages/Slipy/Slipy";
+import Sale from "../Pages/Sale/Sale";
+import Panties from "../Pages/Panties/Panties";
 import Kolgotky from "../Pages/Kolgotky/Kolgotky";
 import ExtendedCard from "../Pages/ExtendedCard/ExtendedCard";
+import Sets from "../Pages/Sets/Sets";
 import All from "../Pages/All/All";
 import Cart from "../Pages/Cart/Cart";
 import FormPage from "../Pages/FormPage/FormPage";
@@ -17,12 +18,16 @@ const AppRouter = () => {
             element: <Main><All/></Main>
         },
         {
-            path: '/panties',
-            element: <Main><Stringy/></Main>
+            path: '/sale',
+            element: <Main><Sale/></Main>
         },
         {
-            path: '/slips',
-            element: <Main><Slipy/></Main>
+            path: '/panties',
+            element: <Main><Panties/></Main>
+        },
+        {
+            path: '/sets',
+            element: <Main><Sets/></Main>
         },
         {
             path: '/tights',
@@ -31,6 +36,10 @@ const AppRouter = () => {
         {
             path: '/panties/:id',
             element: <ExtendedCard type={'panties'}/>
+        },
+        {
+            path: '/sets/:id',
+            element: <ExtendedCard type={'sets'}/>
         },
         {
             path: '/slips/:id',

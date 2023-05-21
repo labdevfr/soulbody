@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 .navBlock{
     display: flex;
     gap: 30px;
@@ -8,14 +8,19 @@
     background: #ffffff;
     position: relative;
 }
-
-.bag{
+.bottomHeader{
+    border-bottom: 0.1rem solid #f4f4f4;
     position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffffff;
+    padding: 30px 0;
+}
+.bag{
+    position: absolute;
     top: 20px;
-    width: 80px;
-    left: 100%;
+    right: 0;
     margin-right: 30px;
-    margin-top: -70px;
     display: flex;
     justify-content: flex-end;
 }
@@ -25,77 +30,57 @@
 }
 .bagContainer{
     position: relative;
-    background-color: rgba(255,255,255,.8);
-    border-radius: 50px;
-    width: 80px;
-    height: 80px;
+    /*background-color: rgba(255,255,255,.8);*/
+    /*border-radius: 50px;*/
+    /*width: 80px;*/
+    /*height: 80px;*/
     cursor: pointer;
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
-    will-change: transform;
-    transition: -webkit-transform 0.2s ease-in-out;
-    transition: transform 0.2s ease-in-out;
-    transition: transform 0.2s ease-in-out,-webkit-transform 0.2s ease-in-out;
-    overflow: hidden;
+    /*box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);*/
+    /*will-change: transform;*/
+    /*transition: -webkit-transform 0.2s ease-in-out;*/
+    /*transition: transform 0.2s ease-in-out;*/
+    /*transition: transform 0.2s ease-in-out,-webkit-transform 0.2s ease-in-out;*/
+    /*overflow: hidden;*/
     display: flex;
+    transition: 0.5s;
 
 }
 .svgBag{
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     stroke: #000;
-    margin: 18px 20px 22px;
 }
 
 .bagContainer:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+    transition: 0.5s;
 }
 .content{
+    /*margin-top: -60px;*/
 }
 
 .count{
-    width: 30px;
-    height: 30px;
-    background-color: red;
+    width: 21px;
+    height: 21px;
+    background-color: #fd0202;
     color: #fff;
-    border-radius: 30px;
+    border-radius: 50%;
     position: absolute;
-    right: -3px;
-    bottom: -3px;
-    text-align: center;
-    line-height: 30px;
-    font-family: Arial,Helvetica,sans-serif;
+    right: -1px;
+    bottom: -4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-@media (max-width: 640px) {
-    .bagContainer{
-        width: 60px;
-        height: 60px;
-
+@media screen and (max-width: 750px) {
+    .bag img {
+        background: #980f44;
     }
     .bag{
-        width: 60px;
-    }
-    .bag img{
-        width: 70px;
-        padding: 10px;
-    }
-    .svgBag{
-        margin: 12px 13px 14px;
+        top: 12px;
+        right: 0;
     }
 }
-@media (max-width: 550px) {
-    .bag{
-        margin-top: -320px;
-    }
-    .content{
-        margin-top: 70px;
-    }
-
-}
-@media (max-width: 500px) {
-    .mainTitle{
-        margin-top: 40px;
-    }
-}
-
