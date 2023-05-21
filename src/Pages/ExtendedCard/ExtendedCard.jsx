@@ -106,7 +106,9 @@ const ExtendedCard = ({type}) => {
                     </div>
                     {panty?.size?.panties && <p>Розмір трусиків:</p>}
                     <div className={classes.ExtendedSelector}>
+                        {panty?.type ==='sets' && <p>Розмір Універсальний</p>}
                         <ul>
+
                             {panty?.type !=='sets' && SIZES.map((item,index)=>(
                                 <li key={index} className={`${activeSize === item? classes.active: ''} ${!panty?.sizes?.includes(item)? classes.disabled : ''}`} onClick={()=>onSizeSelect(item)}>{item}</li>
                             ))}
