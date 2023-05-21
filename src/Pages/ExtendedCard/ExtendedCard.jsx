@@ -106,7 +106,7 @@ const ExtendedCard = ({type}) => {
                     </div>
                     {panty?.size?.panties && <p>Розмір трусиків:</p>}
                     <div className={classes.ExtendedSelector}>
-                        {panty?.type ==='sets' && <p>Розмір Універсальний</p>}
+                        {panty?.size?.hips && <p>Розмір Універсальний</p>}
                         <ul>
 
                             {panty?.type !=='sets' && SIZES.map((item,index)=>(
