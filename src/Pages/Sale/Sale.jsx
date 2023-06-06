@@ -8,7 +8,7 @@ const Sale = () => {
     const {panties} = useSelector(state => state)
     const dispatch = useDispatch()
     useEffect(()=>{
-        if (panties?.length === 0) dispatch(fetchPanties())
+        if (panties.length === 0) dispatch(fetchPanties())
 
     },[])
     return (
@@ -19,7 +19,6 @@ const Sale = () => {
             </div>
             <Cards panties={panties}/>
         </>
-veve
     );
 };
 
