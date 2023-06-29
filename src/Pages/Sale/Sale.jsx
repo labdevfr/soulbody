@@ -8,8 +8,7 @@ const Sale = () => {
     const {panties} = useSelector(state => state)
     const dispatch = useDispatch()
     useEffect(()=>{
-        if (panties.length === 0) dispatch(fetchPanties())
-
+        dispatch(fetchPanties())
     },[])
     return (
         <>
