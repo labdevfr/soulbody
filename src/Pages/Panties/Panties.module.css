@@ -1,0 +1,18 @@
+.sale{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.mainTitle{
+    color: #BF1818;
+    font-size: 22px;
+}
+.mainSubTitle{
+    font-size: 15px;
+    font-weight: bold;
+}
+.mainSubTitle2{
+    font-size: 13px;
+    margin-top: 4px;
+}

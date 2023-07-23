@@ -58,7 +58,9 @@ const ExtendedCard = ({type}) => {
             price: isColor ==='Color'? panty.price : panty.price - panty.discount,
             image: panty.image,
             amount: 1,
-            sale: isColor ==='Color',
+            type: panty.type,
+            discount: panty.discount,
+            sale: isColor === 'Color',
             color: color? color.label : 'Мікс',
             size: activeSize
         }
@@ -102,7 +104,7 @@ const ExtendedCard = ({type}) => {
                 <div className={classes.ExtendedInfo}>
                     <div>
                         <h1 className={classes.ExtendedTitle}>{panty?.name}</h1>
-                        {panty?.type === 'slips'&& <p className={classes.ExtendedSub}>Бавовняні трусики-сліпи</p>}
+                        <p>Бавовняні трусики</p>
                     </div>
                     {panty?.size?.panties && <p>Розмір трусиків:</p>}
                     <div className={classes.ExtendedSelector}>
@@ -120,7 +122,7 @@ const ExtendedCard = ({type}) => {
                             ))}
                         </ul>
                     </div>
-                    {type ==='panties'?
+                    {type ==='panties' || type==='slips'?
                         <div className={classes.IsColor}>
                             <p>
                                 <label>
