@@ -20,7 +20,7 @@ const ExtendedCard = ({type}) => {
     const {panty} = useSelector(state => state)
     const [activeSize, setActiveSize] = useState(null);
     const dispatch = useDispatch()
-    const [isColor,setIsColor] = useState(type==='panties'? 'notColor':'Color')
+    const [isColor,setIsColor] = useState(type==='panties' || type==='slips'? 'notColor':'Color')
     const navigate = useNavigate()
     const params = useParams()
     const [color,setColor] =useState('')

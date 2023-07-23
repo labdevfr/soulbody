@@ -3,6 +3,7 @@
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
+    padding: 0 5px;
 }
 .mainTitle{
     color: #BF1818;
@@ -15,4 +16,5 @@
 .mainSubTitle2{
     font-size: 13px;
     margin-top: 4px;
+    text-align: center;
 }
