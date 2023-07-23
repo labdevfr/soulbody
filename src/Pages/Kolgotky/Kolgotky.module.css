@@ -1,0 +1,16 @@
+.fullWidth{
+    min-height: calc(100vh - 540px);
+    height: 100%;
+}
+.fullWidth p {
+    text-align: center;
+    padding-top: 30px;
+}
+
+
+@media (max-width: 550px) {
+    .fullWidth{
+        min-height: calc(100vh - 430px);
+        height: 100%;
+    }
+}
