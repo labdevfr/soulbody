@@ -104,7 +104,7 @@ const ExtendedCard = ({type}) => {
                 <div className={classes.ExtendedInfo}>
                     <div>
                         <h1 className={classes.ExtendedTitle}>{panty?.name}</h1>
-                        <p>Бавовняні трусики</p>
+                        {panty?.type === 'slips' && <p>Бавовняні трусики</p>}
                     </div>
                     {panty?.size?.panties && <p>Розмір трусиків:</p>}
                     <div className={classes.ExtendedSelector}>
