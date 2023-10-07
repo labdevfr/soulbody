@@ -31,7 +31,6 @@ const Cart = () => {
         },0)
     }
     const saleStringy = () =>{
-        console.log(cart)
         return cart.reduce((acc,current)=>{
             if (current.type === 'panties' && current.color ==='Мікс'){
                 acc+=current.amount
@@ -41,7 +40,6 @@ const Cart = () => {
     }
 
     const saleSlips = () =>{
-        console.log(cart)
         return cart.reduce((acc,current)=>{
             if (current.type === 'slips' && current.color ==='Мікс'){
                 acc+=current.amount
@@ -49,14 +47,11 @@ const Cart = () => {
             return acc
         },0)
     }
-
-    console.log(saleStringy())
-    console.log(saleSlips())
     const goBack =()=>{
         navigate(-1);
     }
     const goForm = ()=>{
-        if ((saleStringy()===0 ||saleStringy()>=5) && (saleSlips()===0 || saleSlips()>=5)){
+        if ((saleStringy()===0 ||saleStringy()>=5) && (saleSlips()===0 || saleSlips()>=6)){
             navigate(`/ordering`, {
                 replace: false,
             });
@@ -112,7 +107,7 @@ const Cart = () => {
                                                     </div>
                                                     <div className={classes.ProductPrice}>
                                                         {item.color==='Мікс'?
-                                                            <span><span className={classes.pricemin}>{(item.price+item.discount)*item.amount}грн</span> <span className={classes.red}>{item.price*item.amount} грн</span></span>:
+                                                            <span><span className={classes.pricemin}>{(item.price+item.discount)*item.amount}грн</span> <span className={classes.red}>{saleSlips() ===6? 350: item.price*item.amount} грн</span></span>:
                                                             <span>{item.price*item.amount} грн</span>}
                                                     </div>
                                                     <button onClick={()=>deleteItem(item.id,item.amount)} className={classes.ProductDelete}>
@@ -135,7 +130,7 @@ const Cart = () => {
                                 exitActive: classes.ExitActiveAlert
                             }}>
                             <div className={classes.alert}>
-                                <span>Оберіть ще {5-saleSlips()} акційні трусики</span>
+                                <span>Оберіть ще {saleSlips() <6 ? 6-saleSlips() : 5-saleStringy()} акційні трусики</span>
                                 <button className={classes.alertBtn} onClick={()=>setShowAlert(false)}>
                                     <img src={close} alt=""/>
                                 </button>
@@ -145,7 +140,7 @@ const Cart = () => {
                             <span className={classes.ProductsDetailsTitle}>
                                 <span>Вибрано товарів: <b>{CartCount}шт.</b></span>
                             </span>
-                            <span className={classes.price}>Сума замовлення: <b>{amount()} грн</b></span>
+                            <span className={classes.price}>Сума замовлення: <b>{saleSlips() === 6? 350 : amount()} грн</b></span>
                         </div>
                         <div className={classes.CartError}>
                             {errorSale && <span>Оберіть ще {saleSlips() <5 ? 5-saleSlips() : 5-saleStringy()} трусиків</span>}

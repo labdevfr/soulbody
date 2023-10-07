@@ -135,7 +135,6 @@ const ExtendedCard = ({type}) => {
                                     <input value={'notColor'} onChange={(e)=>onChangeRadio(e)} type="radio" checked={isColor==='notColor'} className={classes.RadioColor} name={'radio-group'}/>
                                     <span className={classes.radioText}>Акція (колір на наш розсуд)</span>
                                 </label>
-
                             </p>
                         </div>: null}
                     <SelectContainer color={color} onChange={onChangeColor} colors={panty?.colors} isColor={isColor!=='Color'}/>
@@ -147,6 +146,7 @@ const ExtendedCard = ({type}) => {
                             <li>S - 87-92 см</li>
                             <li>M - 93-97 см</li>
                             <li>L - 98-103 см </li>
+                            <li>XL - 103-107 см </li>
                         </ul>: null }
                         {type === "tights" &&  <ul>
                             <li>Талія: 60-88 см</li>
