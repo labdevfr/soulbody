@@ -5,7 +5,7 @@ import Card from "../Card/Card";
 const Cards = ({panties}) => {
     return (
         <div className={classes.cards}>
-            {panties?.map((item)=>(item!==null && <Card key={item.id} item={item}/>))}
+            {panties.reverse()?.map((item)=>(item!==null && <Card key={item.id} item={item}/>))}
         </div>
     );
 };
